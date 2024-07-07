@@ -51,11 +51,6 @@
             echo "Falso: o numero $a não é >= Maior ou igual do que o valor $b <br><br>";
         };
 
-
-
-
-
-
         ?>
     </body>
 
