@@ -82,6 +82,16 @@
                 echo "Novo cadastro. <br><br>";
             }
 
+            echo "Exercicio 06 for <br><br>";
+            // --------FOREACH COM PHP-------
+            $alunos = ["Antonio", "Bianca", "Camila", "Diego"];
+            var_dump($alunos);
+
+            echo "<br><br>";
+            foreach($alunos as $aluno){
+                echo "Nome: $aluno <br>";
+            }
+
 
 
 
