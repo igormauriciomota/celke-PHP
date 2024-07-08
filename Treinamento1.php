@@ -34,6 +34,7 @@
     echo "Resultado exemplo E: $result_cinco <br><br>";
 
     // ----OPERADORES ARITMÉTICOS - COMO CRIAR VARIAVEIS
+    echo "<hr>";
     echo "OPERADORES ARITMÉTICOS - COMO CRIAR VARIAVEIS <br><br>";
 
     $a = 2;
@@ -63,6 +64,7 @@
     echo "A divisão da variavel e: $result_divisao <br><br>";
 
     // CONVERSÃO DE VALORES EM REAIS
+    echo "<hr>";
     echo "CONVERTER O VALOR EM REAL <br><br>";
 
     $cc = 3546.91;
@@ -73,6 +75,111 @@
     
     $resultado_real = $cc - $debito;
     echo "Valor em conta corrente: R$ " . number_format($resultado_real, 2, ",", "." ) . "<br><br>";
+
+    // OPERADOR DE ATRIBUIÇÃO
+    echo "<hr>";
+    echo "OPERADOR DE ATRIBUIÇÃO <br><br>";
+
+    $laranja = 5;
+    $maca = 10;
+    $pera = 3;
+    $total = 18;
+
+    //Atribuição com Adição
+    echo "Soma valor $total += $laranja <br><br>";
+    //$total = $total + $laranja; +=
+    $total += $laranja;
+    echo "Resultado da adição: $total <br><br>";
+
+    echo "Subitração o valor $total -= $maca <br><br>";
+    //$total = $total - $maca; -=
+    $total -= $maca;
+    echo "Resultado da Subitração: $total <br><br>";
+
+    echo "Multiplicação do valor $total x= $pera <br><br>";
+    // $total = $total * $pera; *=
+    $total *= $pera;
+    echo "Resultado da Mutiplicação: $total <br><br>";
+
+    echo "Divisão do valor $total /= $pera <br><br>";
+    // $total = $total / $pera; /=
+    $total /= $pera;
+    echo "Resultado da Divisão: $total <br><br>";
+
+    echo "Resto do valor $laranja %= $pera <br><br>";
+    // $total = $total % $pera; %=
+    $laranja %= $pera;
+    echo "Resultado do Resto: $laranja <br><br>";
+
+    // Concatenação
+    $e = "Bom ";
+    $e .= "Dia, ";
+    $e .= "Igor ";
+    $e .= "Mota";
+
+    echo "$e <br><br>";
+
+     // OPERADOR DE ATRIBUIÇÃO
+    echo "<hr>";
+    echo "<h3>OPERADOR Incremento e Decremento</h3><br><br>";
+
+    // Pos Incremento
+    $t = 5;
+    echo "Deve ser 5: " . $t++ . "<br><br>";
+    echo "Resultado ser 6: " . $t . "<br><br>";
+
+    //Pre-incremento
+    $t = 5;
+    echo "Deve ser 6: " . ++$t . "<br><br>";
+    echo "Resultado ser 6: " . $t . "<br><br>";
+
+    // Pós decremento
+    $t = 5;
+    echo "Deve ser 5: " . $t++ . "<br><br>";
+    echo "Resultado ser 6: " . $t . "<br><br>";
+
+    //Pre-decremento
+    $t = 5;
+    echo "Deve ser 6: " . ++$t . "<br><br>";
+    echo "Resultado ser 6: " . $t . "<br><br>";
+
+    // OPERADOR DE ATRIBUIÇÃO
+    echo "<hr>";
+    echo "<h3>OPERADOR DE COMPARAÇÃO</h3><br><br>";
+
+    //Variaveis
+    $i = 10;
+    $j = 8;
+    $k = 10;
+
+    // operador de de Igualdade
+    if($i == $j){
+        echo "Verdadeiro: o numero $i e igual ao valor $j <br><br>";
+    } else {
+        echo "Falso: o numero $i não e igual ao valor $j <br><br>";
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
