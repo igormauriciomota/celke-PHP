@@ -92,8 +92,22 @@
     salario_b($salario_b);
     echo "Fora da função 3 - salario com aumento ao utilizar o &: R$ " . number_format($salario_b, 2, ",", "." ) . "<br><br>";
 
+    echo "<hr>";
 
+    // FUNÇÃO RECURSIVA
+    echo "<h4>Função recursiva</h4>";
 
+    function exibe($num){
+        if($num >= 1){
+            echo "Valor passado para a função: $num <br><br>";
+            $qnt = $num - 1;
+            exibe($qnt);
+        }
+        
+
+    }
+
+    exibe(10);
 
 
 
