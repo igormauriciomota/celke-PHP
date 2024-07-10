@@ -11,7 +11,7 @@
     <!-- FORMULARIO -e recomendado usar o metodo POST -->
 
     <h2>Cadastrar usuário</h2>
-    <form method="GET" action="">
+    <form method="POST" action="processapost.php">
         <!-- Nome do usuario -->
         <label>Nome: </label>
         <input type="text" name="nome_cliente" placeholder="Digite o nome" required /><br><br>
