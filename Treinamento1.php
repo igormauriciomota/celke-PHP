@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="shortcut icon" href="images/favicon.ico"/>
-        <title>PHP</title>
-    </head>
 
-    <body>
-        <?php
-    
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <title>PHP</title>
+</head>
+
+<body>
+    <?php
+
     // ----CONVERSÃO DE VALORES
     echo "CONVERSÃO DE VALORES <br><br>";
-    
+
 
     $result = "2";
     var_dump($result);
@@ -29,7 +30,7 @@
     var_dump($result_quatro);
     echo "Resultado exemplo D 3 + 11: $result_quatro <br><br>";
     // double e = float ponto flutuante numero quebrado
-    $result_cinco = (double) $result_quatro;
+    $result_cinco = (float) $result_quatro;
     var_dump($result_cinco);
     echo "Resultado exemplo E: $result_cinco <br><br>";
 
@@ -68,13 +69,13 @@
     echo "CONVERTER O VALOR EM REAL <br><br>";
 
     $cc = 3546.91;
-    echo "Valor em Conta Corrente: R$ " . number_format($cc, 2, ",", "." ) . "<br><br>";
+    echo "Valor em Conta Corrente: R$ " . number_format($cc, 2, ",", ".") . "<br><br>";
 
     $debito = 1420.51;
-    echo "Valor do Debito: R$ " . number_format($debito, 2, ",", "." ) . "<br><br>";
-    
+    echo "Valor do Debito: R$ " . number_format($debito, 2, ",", ".") . "<br><br>";
+
     $resultado_real = $cc - $debito;
-    echo "Valor em conta corrente: R$ " . number_format($resultado_real, 2, ",", "." ) . "<br><br>";
+    echo "Valor em conta corrente: R$ " . number_format($resultado_real, 2, ",", ".") . "<br><br>";
 
     // OPERADOR DE ATRIBUIÇÃO
     echo "<hr>";
@@ -119,7 +120,7 @@
 
     echo "$e <br><br>";
 
-     // OPERADOR DE ATRIBUIÇÃO
+    // OPERADOR DE ATRIBUIÇÃO
     echo "<hr>";
     echo "<h3>OPERADOR Incremento e Decremento</h3><br><br>";
 
@@ -153,12 +154,14 @@
     $k = 10;
 
     // operador de de Igualdade
-    if($i == $j){
+    if ($i == $j) {
         echo "Verdadeiro: o numero $i e igual ao valor $j <br><br>";
     } else {
         echo "Falso: o numero $i não e igual ao valor $j <br><br>";
     }
 
+    // OPERADOR DE ATRIBUIÇÃO
+    echo "<hr>";
 
 
 
@@ -195,7 +198,8 @@
 
 
 
-        ?>
-    </body>
+
+    ?>
+</body>
 
 </html>
