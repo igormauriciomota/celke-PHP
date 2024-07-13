@@ -152,6 +152,7 @@
     $i = 10;
     $j = 8;
     $k = 10;
+    $l = 12;
 
     // operador de de Igualdade
     if ($i == $j) {
@@ -160,8 +161,45 @@
         echo "Falso: o numero $i não e igual ao valor $j <br><br>";
     }
 
+    //Operador de Diferente
+    if ($i != $j) {
+        echo "Verdadeiro o numero $i e diferente de $j <br><br>";
+    } else {
+        echo "Falso o numero $i não e diferente de $j <br><br>";
+    }
+
+    //Operador de < Menor
+
+    if ($i < $j) {
+        echo "Verdadeiro o numero $i e menor do que $j <br><br>";
+    } else {
+        echo "Falso o numero $i não e menor do que $j <br><br>";
+    }
+
+    //Operador de maior
+    if ($i > $j) {
+        echo "Verdadeiro o numero $i e maior do que $j <br><br>";
+    } else {
+        echo "Falso o numero $i não e maior do que $j <br><br>";
+    }
+
+    //Operador de <= Menor ou igual
+    if ($i <= $k) {
+        echo "Verdadeiro o numero $i e menor ou igual ao $k <br><br>";
+    } else {
+        echo "Falso o numero $i não e menor ou igual ao $k <br><br>";
+    }
+
+    //Operador de >= Maior ou igual
+    if ($i >= $j) {
+        echo "Verdadeiro o numero $i e maior ou igual ao $j <br><br>";
+    } else {
+        echo "Falso o numero $i nao e maior ou igual ao $j <br><br>";
+    }
+
     // OPERADOR DE ATRIBUIÇÃO
     echo "<hr>";
+    echo "<h3>Operadores Logicos</h3><br><br>";
 
 
 
