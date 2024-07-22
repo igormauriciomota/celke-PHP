@@ -10,8 +10,8 @@
 <body>
     <?php
 
-    // ----CONVERSÃO DE VALORES
-    echo "CONVERSÃO DE VALORES <br><br>";
+    // ----01-CONVERSÃO DE VALORES
+    echo "01-CONVERSÃO DE VALORES <br><br>";
 
 
     $result = "2";
@@ -34,9 +34,9 @@
     var_dump($result_cinco);
     echo "Resultado exemplo E: $result_cinco <br><br>";
 
-    // ----OPERADORES ARITMÉTICOS - COMO CRIAR VARIAVEIS
+    // --- 02-OPERADORES ARITMÉTICOS - COMO CRIAR VARIAVEIS
     echo "<hr>";
-    echo "OPERADORES ARITMÉTICOS - COMO CRIAR VARIAVEIS <br><br>";
+    echo "02-OPERADORES ARITMÉTICOS - COMO CRIAR VARIAVEIS <br><br>";
 
     $a = 2;
     $b = 4;
@@ -64,9 +64,9 @@
     var_dump($result_divisao);
     echo "A divisão da variavel e: $result_divisao <br><br>";
 
-    // CONVERSÃO DE VALORES EM REAIS
+    // --- 03-CONVERSÃO DE VALORES EM REAIS
     echo "<hr>";
-    echo "CONVERTER O VALOR EM REAL <br><br>";
+    echo "03-CONVERTER O VALOR EM REAL <br><br>";
 
     $cc = 3546.91;
     echo "Valor em Conta Corrente: R$ " . number_format($cc, 2, ",", ".") . "<br><br>";
@@ -77,9 +77,9 @@
     $resultado_real = $cc - $debito;
     echo "Valor em conta corrente: R$ " . number_format($resultado_real, 2, ",", ".") . "<br><br>";
 
-    // OPERADOR DE ATRIBUIÇÃO
+    // --- 04-OPERADOR DE ATRIBUIÇÃO
     echo "<hr>";
-    echo "OPERADOR DE ATRIBUIÇÃO <br><br>";
+    echo "04-OPERADOR DE ATRIBUIÇÃO <br><br>";
 
     $laranja = 5;
     $maca = 10;
@@ -112,7 +112,16 @@
     $laranja %= $pera;
     echo "Resultado do Resto: $laranja <br><br>";
 
-    // Concatenação
+    echo "<hr>";
+    // --- 05-Concatenação
+    echo "05- Concatenação <br><br>";
+
+    $prim = "Bom ";
+    $seg = "Dia, ";
+    $ter = "Igor";
+
+    echo "$prim $seg $ter <br><br>";
+
     $e = "Bom ";
     $e .= "Dia, ";
     $e .= "Igor ";
@@ -120,9 +129,9 @@
 
     echo "$e <br><br>";
 
-    // OPERADOR DE ATRIBUIÇÃO
+    // --- 06 OPERADOR DE ATRIBUIÇÃO
     echo "<hr>";
-    echo "<h3>OPERADOR Incremento e Decremento</h3><br><br>";
+    echo "<h3>06-OPERADOR Incremento e Decremento</h3><br><br>";
 
     // Pos Incremento
     $t = 5;
@@ -144,9 +153,9 @@
     echo "Deve ser 6: " . ++$t . "<br><br>";
     echo "Resultado ser 6: " . $t . "<br><br>";
 
-    // OPERADOR DE ATRIBUIÇÃO
+    // --- 07 OPERADOR DE COMPARAÇÃO
     echo "<hr>";
-    echo "<h3>OPERADOR DE COMPARAÇÃO</h3><br><br>";
+    echo "<h3>07-OPERADOR DE COMPARAÇÃO</h3><br><br>";
 
     //Variaveis
     $i = 10;
@@ -155,6 +164,7 @@
     $l = 12;
 
     // operador de de Igualdade
+
     if ($i == $j) {
         echo "Verdadeiro: o numero $i e igual ao valor $j <br><br>";
     } else {
@@ -197,10 +207,30 @@
         echo "Falso o numero $i nao e maior ou igual ao $j <br><br>";
     }
 
-    // OPERADOR DE ATRIBUIÇÃO
+    // --- 08 OPERADOR DE ATRIBUIÇÃO
     echo "<hr>";
-    echo "<h3>Operadores Logicos</h3><br><br>";
+    echo "<h3>08-Operadores Logicos</h3><br><br>";
 
+    $m = 10;
+    $n = 8;
+    $o = 7;
+    $p = 10;
+    $q = 8;
+
+
+    // AND Ambos verdadeiro
+    if (($m == $p) and ($n == $q)) {
+        echo "Ulilizando AND: Verdadeiro <br><br>";
+    } else {
+        echo "Ulilizando AND: Falso <br><br>";
+    }
+
+    // OR True se um ou outro for verdadeiro
+    if (($m == $p) or ($n == $o)) {
+        echo "Ulilizando OR: Verdadeiro <br><br>";
+    } else {
+        echo "Ulilizando OR: Falso <br><br>";
+    }
 
 
 
