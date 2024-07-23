@@ -220,16 +220,30 @@
 
     // AND Ambos verdadeiro
     if (($m == $p) and ($n == $q)) {
-        echo "Ulilizando AND: Verdadeiro <br><br>";
+        echo "Ultilizando AND: Verdadeiro <br><br>";
     } else {
-        echo "Ulilizando AND: Falso <br><br>";
+        echo "Ultilizando AND: Falso <br><br>";
     }
 
     // OR True se um ou outro for verdadeiro
     if (($m == $p) or ($n == $o)) {
-        echo "Ulilizando OR: Verdadeiro <br><br>";
+        echo "Ultilizando OR: Verdadeiro <br><br>";
     } else {
         echo "Ulilizando OR: Falso <br><br>";
+    }
+
+    // XOR se um ou outro for verdadeiro não ambos
+    if (($m == $n) xor ($o == $p)) {
+        echo "Ultilizado XOR: Verdadeiro <br><br>";
+    } else {
+        echo "Utilizado XOR: Falso <br><br>";
+    }
+
+    // ! True se operador não e =verdadeiro (Exemplo uma senha de banco)
+    if (!empty($z)) {
+        echo "Utiliza ! se verdadeiro a senha do banco exemplo<br><br>";
+    } else {
+        echo "Utiliza ! se a senha for falso indica <br><br>";
     }
 
 
