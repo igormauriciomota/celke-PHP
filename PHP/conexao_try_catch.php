@@ -5,8 +5,8 @@
 // false - Não apresentar a mensagem de alerta com erro.
 ini_set('display_errors', false);
 
-// Permitir o uso do (try catch) deve ser chamado o mysqli_report(MYSQLI_REPORT_ALL)
-mysqli_report(MYSQLI_REPORT_ALL);
+// Permitir o uso do (try catch) deve ser chamado o mysqli_report(MYSQLI_REPORT_ERROR)
+mysqli_report(MYSQLI_REPORT_ERROR);
 
 //Credenciais do banco de dados
 $hostname = "localhost";
@@ -24,7 +24,7 @@ try {
     $conn = mysqli_connect($hostname, $username, $password, $dbname);
 
     if ($conn) {
-        echo "Conexao com banco e dados realizado com sucesso! <br><br>";
+        //echo "Conexao com banco e dados realizado com sucesso! <br><br>";
     } else {
         echo "Tente mais tarde ou entre em contato com ...";
 

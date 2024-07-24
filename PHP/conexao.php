@@ -22,11 +22,11 @@ $port = 3306;
 $conn = mysqli_connect($host, $user, $pass, $dbname);
 
 if ($conn) {
-    echo "Conexao com banco de dados realizado com sucesso! <br>";
+    //echo "Conexao com banco de dados realizado com sucesso! <br>";
 } else {
 
-    echo "Erro: Conexao com banco e dados não realizado com sucesso. Erro
-    gerado: " . mysqli_connect_error();
+    echo "Erro: Conexao com banco de dados não realizado, Tente mais tarde ou entre em contato com ... "
+        . mysqli_connect_error();
 }
 
 
