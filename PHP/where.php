@@ -4,9 +4,9 @@ include_once 'conexao.php';
 
 echo "<h1>Lista os usuários</h1>";
 
-$query_usuarios = "SELECT id, nome, email, sits_usuario_id
+$query_usuarios = "SELECT id, nome, email, sits_usuario_id, niveis_acesso_id
                         FROM usuarios 
-                        WHERE sits_usuario_id = 3";
+                        WHERE niveis_acesso_id = 1";
 
 $result_usuarios = mysqli_query($conn, $query_usuarios);
 
@@ -19,6 +19,6 @@ while ($row_usuario = mysqli_fetch_assoc($result_usuarios)) {
     echo "Nome: $nome <br>";
     echo "E-mail: $email <br>";
     echo "Usuario: $sits_usuario_id <br>";
-    echo "Usuario: $sits_usuario_id <br>";
+    echo "Niveis de Acesso: $niveis_acesso_id <br>";
     echo "<hr><br>";
 }
