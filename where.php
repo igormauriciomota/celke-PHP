@@ -6,7 +6,7 @@ echo "<h1>Lista os usuários</h1>";
 
 $query_usuarios = "SELECT id, nome, email, sits_usuario_id, niveis_acesso_id
                         FROM usuarios
-                        WHERE email = 'igor@gmail.com' ";
+                        WHERE niveis_acesso_id = 2 ";
 
 $result_usuarios = mysqli_query($conn, $query_usuarios);
 
