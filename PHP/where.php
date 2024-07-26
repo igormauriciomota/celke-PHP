@@ -6,6 +6,7 @@ echo "<h1>Lista os usuários</h1>";
 
 $query_usuarios = "SELECT id, nome, email, sits_usuario_id, niveis_acesso_id
                         FROM usuarios
+                        /* Posso escolher qual coluna usas*/
                         WHERE email = 'igor@gmail.com' ";
 
 $result_usuarios = mysqli_query($conn, $query_usuarios);
