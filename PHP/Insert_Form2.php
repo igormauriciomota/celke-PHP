@@ -24,13 +24,7 @@
         $senha_cript = password_hash($dados['senha'], PASSWORD_DEFAULT);
 
         $query_cad_usuario = "INSERT INTO usuarios (nome, email, senha, sits_usuario_id, niveis_acesso_id,
-        created) VALUES ('
-        " . $dados['nome'] . "','
-        " . $dados['email'] . "',
-        ' . $senha_cript . ',
-
-        " . $dados['sits_usuario_id'] . ",
-        " . $dados['niveis_acesso_id'] . ",  NOW())";
+        created) VALUES ('" . $dados['nome'] . "','" . $dados['email'] . "',' $senha_cript '," . $dados['sits_usuario_id'] . "," . $dados['niveis_acesso_id'] . ",  NOW())";
 
         mysqli_query($conn, $query_cad_usuario);
 
