@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Celke - INSERT FORMULARIO</title>
+    <title>Celke - FORMULARIO</title>
 </head>
 
 <body>
@@ -12,7 +12,7 @@
 
     include_once 'conexao.php';
 
-    echo "<h1>Cadastrar Todos Usuaruios de uma vez</h1><br>";
+    echo "<h1>Cadastrar Todos Usuaruios de uma só vez, Manter os dados no formulario</h1><br>";
 
     //=> (FILTER_SANITIZE_STRING) está obsoleto usar FILTER_UNSAFE_RAW)
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
@@ -24,7 +24,7 @@
         $senha_cript = password_hash($dados['senha'], PASSWORD_DEFAULT);
 
         $query_cad_usuario = "INSERT INTO usuarios (nome, email, senha, sits_usuario_id, niveis_acesso_id,
-                created) VALUES ('$nome', '" . $dados['email'] . "',' $senha_cript '," . $dados['sits_usuario_id'] . "," . $dados['niveis_acesso_id'] . ",  NOW())";
+        created) VALUES ('" . $dados['nome'] . "','" . $dados['email'] . "',' $senha_cript '," . $dados['sits_usuario_id'] . "," . $dados['niveis_acesso_id'] . ",  NOW())";
 
         mysqli_query($conn, $query_cad_usuario);
 
@@ -34,19 +34,11 @@
             echo "Erro: Usuário não cadastrado com sucesso!<br><br>";
         }
     }
-
     ?>
     <form method="POST" action="">
 
-        <?php
-        $valor_nome = "";
-        if (isset($dados['nome'])) {
-            $valor_nome =  $dados['nome'];
-        }
-        ?>
-
         <label>Nome: </label>
-        <input type="text" name="nome" placeholder="Nome completo" value="<?php echo $valor_nome; ?>"><br><br>
+        <input type="text" name="nome" placeholder="Nome completo"><br><br>
 
         <label>E-mail: </label>
         <input type="email" name="email" placeholder="O melhor e-mail"><br><br>
@@ -63,6 +55,7 @@
         <input type="submit" value="cadastrar" name="SendCadUsuario">
 
     </form>
+
 
 </body>
 

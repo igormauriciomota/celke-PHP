@@ -17,21 +17,24 @@
     //=> (FILTER_SANITIZE_STRING) está obsoleto usar FILTER_UNSAFE_RAW)
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
-
     if (!empty($dados['SendCadUsuario'])) {
         //var_dump($dados);
+        //die();
+
+        $nome = mysqli_real_escape_string($conn, $dados['nome']);
+        //$nome = $dados['nome'];
 
         $senha_cript = password_hash($dados['senha'], PASSWORD_DEFAULT);
 
-        $query_cad_usuario = "INSERT INTO usuarios (nome, email, senha, sits_usuario_id, niveis_acesso_id,
-                created) VALUES ('$nome', '" . $dados['email'] . "',' $senha_cript '," . $dados['sits_usuario_id'] . "," . $dados['niveis_acesso_id'] . ",  NOW())";
+        $query_cad_usuario = "INSERT INTO usuarios (nome, email, senha, sits_usuario_id, niveis_acesso_id, created)
+    VALUES ('$nome', '" . $dados['email'] . "', '$senha_cript', " . $dados['sits_usuario_id'] . ", " . $dados['niveis_acesso_id'] . ", NOW())";
 
         mysqli_query($conn, $query_cad_usuario);
-
         if (mysqli_insert_id($conn)) {
-            echo "Usuário cadastrado com sucesso!<br><br>";
+            echo "Usuario cadastrado com Sucesso!<br>";
+            unset($dados);
         } else {
-            echo "Erro: Usuário não cadastrado com sucesso!<br><br>";
+            echo "Erro: Usuario não cadastrado com Sucesso!<br>";
         }
     }
 
