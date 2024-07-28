@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Celke - INSERT FORMULARIO</title>
+    <title>Celke - VALIDAR FORMULARIO</title>
 </head>
 
 <body>
@@ -12,7 +12,7 @@
 
     include_once 'conexao.php';
 
-    echo "<h1>Cadastrar Todos Usuaruios de uma vez e Validar o formulario individualmente</h1><br>";
+    echo "<h1>Cadastrar e Validar o Todos os campos  formulario</h1><br>";
 
     //=> (FILTER_SANITIZE_STRING) está obsoleto usar FILTER_UNSAFE_RAW)
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
@@ -23,26 +23,26 @@
         //Inicio variavel validação de formulario
         $empty_input = false;
         //Validação formulario nome
-        if (empty($dados['nome'])) {
-            $empty_input = true;
-            echo "<p style='color: #f00'>Erro: Necessario preencrer o campo nome!</p>";
-            //Validação formulario email
-        } elseif (empty($dados['email'])) {
-            $empty_input = true;
-            echo "<p style='color: #f00'>Erro: Necessario preencrer o campo e-mail!</p>";
-            //Validação formulario senha
-        } elseif (empty($dados['senha'])) {
-            $empty_input = true;
-            echo "<p style='color: #f00'>Erro: Necessario preencrer o campo Senha!</p>";
-            //Validação formulario situação
-        } elseif (empty($dados['sits_usuario_id'])) {
-            $empty_input = true;
-            echo "<p style='color: #f00'>Erro: Necessario preencrer o campo Situação!</p>";
-            //Validação formulario Nível de Acesso
-        } elseif (empty($dados['niveis_acesso_id'])) {
-            $empty_input = true;
-            echo "<p style='color: #f00'>Erro: Necessario preencrer o campo Nível de Acesso!</p>";
-        }
+        // if (empty($dados['nome'])) {
+        //     $empty_input = true;
+        //     echo "<p style='color: #f00'>Erro: Necessario preencrer o campo nome!</p>";
+        //     //Validação formulario email
+        // } elseif (empty($dados['email'])) {
+        //     $empty_input = true;
+        //     echo "<p style='color: #f00'>Erro: Necessario preencrer o campo e-mail!</p>";
+        //     //Validação formulario senha
+        // } elseif (empty($dados['senha'])) {
+        //     $empty_input = true;
+        //     echo "<p style='color: #f00'>Erro: Necessario preencrer o campo Senha!</p>";
+        //     //Validação formulario situação
+        // } elseif (empty($dados['sits_usuario_id'])) {
+        //     $empty_input = true;
+        //     echo "<p style='color: #f00'>Erro: Necessario preencrer o campo Situação!</p>";
+        //     //Validação formulario Nível de Acesso
+        // } elseif (empty($dados['niveis_acesso_id'])) {
+        //     $empty_input = true;
+        //     echo "<p style='color: #f00'>Erro: Necessario preencrer o campo Nível de Acesso!</p>";
+        // }
 
         //Validação de Formulario
         if (!$empty_input) {
