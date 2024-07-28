@@ -12,7 +12,7 @@
 
     include_once 'conexao.php';
 
-    echo "<h1>Cadastrar e Validar o Todos os campos  formulario</h1><br>";
+    echo "<h1>Cadastrar e Validar E-mail unico</h1><br>";
 
     //=> (FILTER_SANITIZE_STRING) está obsoleto usar FILTER_UNSAFE_RAW)
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
@@ -29,6 +29,16 @@
             $empty_input = true;
             echo "<p style='color: #f00'>Erro: Necessario preencher todos os campos!</p>";
         }
+
+        //Verificar se nenhum usuario não esta usando este e-mail.(NÃO PODE USAR EM DUPLICIDADE).
+        $email = mysqli_real_escape_string($conn, $dados['email']);
+        $query_view_usuario = "SELECT id FROM usuarios WHERE email = '$email'LIMIT 1";
+        $result_view_usuario = mysqli_query($conn, $query_view_usuario);
+        if (($result_view_usuario) and ($result_view_usuario->num_rows != 0)) {
+            $empty_input = true;
+            echo "<p style='color: #f00'>Erro: Este e-mail já está cadastrado!</p>";
+        }
+
 
         if (!$empty_input) {
             $nome = mysqli_real_escape_string($conn, $dados['nome']);

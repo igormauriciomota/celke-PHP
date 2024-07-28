@@ -37,7 +37,7 @@
             echo "Usuário cadastrado com sucesso!<br>";
             unset($dados);
         } else {
-            echo "Erro: Usuário não cadastrado com sucesso!<br>" . mysqli_connect_error();
+            echo "Erro: Usuário não cadastrado com sucesso!<br>";
         }
     }
 
