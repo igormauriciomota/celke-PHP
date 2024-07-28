@@ -37,7 +37,7 @@
             echo "Usuário cadastrado com sucesso!<br>";
             unset($dados);
         } else {
-            echo "Erro: Usuário não cadastrado com sucesso!<br>";
+            echo "Erro: Usuário não cadastrado com sucesso!<br>" . mysqli_connect_error();
         }
     }
 
@@ -89,7 +89,9 @@
         <label>Nível de Acesso: </label>
         <input type="number" name="niveis_acesso_id" placeholder="Nível de Acesso" value="<?php echo $valor_niveis_acesso_id; ?>" /><br><br>
 
-        <input type="submit" value="Cadastrar" name="SendCadUsuario" />
+        <!-- <button type="submit" value="Cadastrar" name="SendCadUsuario">Cadastrar</button> -->
+
+        <input type="submit" value="Cadastrar" name="SendCadUsuario">
     </form>
 
 </body>

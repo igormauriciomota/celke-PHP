@@ -32,7 +32,7 @@
         mysqli_query($conn, $query_cad_usuario);
         if (mysqli_insert_id($conn)) {
             echo "Usuario cadastrado com Sucesso!<br>";
-            unset($dados);
+            //unset($dados);
         } else {
             echo "Erro: Usuario não cadastrado com Sucesso!<br>";
         }
@@ -51,17 +51,74 @@
         <label>Nome: </label>
         <input type="text" name="nome" placeholder="Nome completo" value="<?php echo $valor_nome; ?>"><br><br>
 
+        <?php
+        $valor_email = "";
+        if (isset($dados['email'])) {
+            $valor_email =  $dados['email'];
+        }
+        ?>
+
         <label>E-mail: </label>
-        <input type="email" name="email" placeholder="O melhor e-mail"><br><br>
+        <input type="email" name="email" placeholder="O melhor e-mail" value="<?php echo $valor_email; ?>"><br><br>
+
+        <?php
+        $valor_senha = "";
+        if (isset($dados['senha'])) {
+            $valor_senha =  $dados['senha'];
+        }
+        ?>
 
         <label>Senha: </label>
-        <input type="password" name="senha" placeholder="Senha do usuário"><br><br>
+        <input type="password" name="senha" placeholder="Senha do usuário" value="<?php echo $valor_senha; ?>"><br><br>
+
+        <?php
+        $query_cad_usuarios = "SELECT id AS id_sit, nome AS nome_sit FROM sits_usuarios ORDER BY nome ASC";
+        $result_sits_usuarios = mysqli_query($conn, $query_cad_usuarios);
+        // while ($row_sit_usuario = mysqli_fetch_assoc($result_sits_usuarios)) {
+        //     var_dump($row_sit_usuario);
+        //     extract($row_sit_usuario);
+        //     echo "<option value='$id_sit'>$nome_sit</option>";
+        // }
+        ?>
 
         <label>Situação: </label>
-        <input type="number" name="sits_usuario_id" placeholder="Situação"><br><br>
+        <select name="sits_usuario_id" id="sits_usuario_id">
+            <!-- <option value="">Senecione</option>
+            <option value="1">Ativo</option>
+            <option value="2">Inativo</option>
+            <option value="3">Aguardando confirmação</option> -->
+            <?php
+            echo "<option value=''>Senecione</option>";
+            while ($row_sit_usuario = mysqli_fetch_assoc($result_sits_usuarios)) {
+                extract($row_sit_usuario);
+                $select_sit_usuario = "";
+                if (isset($dados['sits_usuario_id']) and ($dados['sits_usuario_id'] == $id_sit)) {
+                    $select_sit_usuario = "selected";
+                }
+                echo "<option value='$id_sit' $select_sit_usuario>$nome_sit</option>";
+            }
+            ?>
+        </select><br><br>
 
+        <?php
+        $query_niveis_acessos = "SELECT id AS id_niv, nome AS nome_niv FROM niveis_acessos ORDER BY nome ASC";
+        $result_niveis_acessos = mysqli_query($conn, $query_niveis_acessos);
+
+        ?>
         <label>Nível de Acesso: </label>
-        <input type="number" name="niveis_acesso_id" placeholder="Nível de Acesso"><br><br>
+        <select name="niveis_acesso_id" id="niveis_acesso_id">
+            <?php
+            echo "<option value=''>Senecione</option>";
+            while ($row_nivel_acesso = mysqli_fetch_assoc($result_niveis_acessos)) {
+                extract($row_nivel_acesso);
+                $select_nivel_acesso = "";
+                if (isset($dados['niveis_acesso_id']) and ($dados['niveis_acesso_id'] == $id_niv)) {
+                    $select_nivel_acesso = "selected";
+                }
+                echo "<option value='$id_niv' $select_nivel_acesso>$nome_niv</option>";
+            }
+            ?>
+        </select><br><br>
 
         <input type="submit" value="cadastrar" name="SendCadUsuario">
 
