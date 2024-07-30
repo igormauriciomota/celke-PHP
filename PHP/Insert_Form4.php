@@ -19,25 +19,29 @@
 
     if (!empty($dados['SendCadUsuario'])) {
         //var_dump($dados);
-
         //Inicio variavel validação de formulario
         $empty_input = false;
+
         //Validação formulario nome
         if (empty($dados['nome'])) {
             $empty_input = true;
             echo "<p style='color: #f00'>Erro: Necessario preencrer o campo nome!</p>";
+
             //Validação formulario email
         } elseif (empty($dados['email'])) {
             $empty_input = true;
             echo "<p style='color: #f00'>Erro: Necessario preencrer o campo e-mail!</p>";
+
             //Validação formulario senha
         } elseif (empty($dados['senha'])) {
             $empty_input = true;
             echo "<p style='color: #f00'>Erro: Necessario preencrer o campo Senha!</p>";
+
             //Validação formulario situação
         } elseif (empty($dados['sits_usuario_id'])) {
             $empty_input = true;
             echo "<p style='color: #f00'>Erro: Necessario preencrer o campo Situação!</p>";
+
             //Validação formulario Nível de Acesso
         } elseif (empty($dados['niveis_acesso_id'])) {
             $empty_input = true;
