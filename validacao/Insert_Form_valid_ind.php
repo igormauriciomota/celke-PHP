@@ -43,7 +43,7 @@
             $senha_cript = password_hash($dados['senha'], PASSWORD_DEFAULT);
 
             $query_cad_usuario = "INSERT INTO usuarios (nome, email, senha, sits_usuario_id, niveis_acesso_id,
-            created) VALUES ('" . $dados['nome'] . "','" . $dados['email'] . "',' $senha_cript '," . $dados['sits_usuario_id'] . "," . $dados['niveis_acesso_id'] . ",  NOW())";
+            created) VALUES ('" . $dados['nome'] . "','" . $dados['email'] . "',' $senha_cript '," . $dados['sits_usuario_id'] . "," . $dados['niveis_acessos'] . ",  NOW())";
 
             mysqli_query($conn, $query_cad_usuario);
             if (mysqli_insert_id($conn)) {
@@ -129,21 +129,27 @@
 
         <!-- Fim de Situação  -->
 
-        <!-- Variavel situação NIVEIS DE ACESSO PHP-->
+        <!-- Variavel {NIVEIS DE ACESSO} PHP-->
         <?php
-
-
+        $query_niveis_acesso = "SELECT id AS id_niveis, nome AS nome_niveis FROM niveis_acessos ORDER BY nome ASC";
+        $result_niveis_acesso = mysqli_query($conn, $query_niveis_acesso);
 
         ?>
         <label>Nível de Acesso: </label>
-        <select name="niveis_acesso_id" id="niveis_acesso_id">
-            <option value="">Selecione</option>
+        <select name="niveis_acessos" id="niveis_acessos">
+            <!-- <option value="">Selecione</option>
             <option value="1">Super administrador</option>
             <option value="2">Administrador</option>
-            <option value="3">Aluno</option>
+            <option value="3">Aluno</option> -->
 
             <?php
-
+            echo "<option value=''>Selecione</option>";
+            //dentro do select
+            while ($row_niveis_acesso = mysqli_fetch_assoc($result_niveis_acesso)) {
+                //var_dump($row_sit_usuario);
+                extract($row_niveis_acesso);
+                echo "<option value='$id_niveis' selected>$nome_niveis</option>";
+            }
 
             ?>
         </select><br><br>
