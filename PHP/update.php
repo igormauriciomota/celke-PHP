@@ -12,7 +12,7 @@
 
     include_once 'conexao.php';
 
-    echo "<h1>Editar Usuário comando UPDATE</h1>";
+    echo "<h1>Editar dentro do Banco de dados, Usuário comando UPDATE</h1>";
 
     $id = 2;
     $nome = "Marcelo Moreno";
