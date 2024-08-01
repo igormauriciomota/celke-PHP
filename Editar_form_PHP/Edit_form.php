@@ -119,61 +119,30 @@
 
         <!-- sits - Situação -->
         <?php
-        $query_sits_usuarios = "SELECT id, nome FROM sits_usuarios ORDER BY nome ASC";
-        $result_sits_usuarios = mysqli_query($conn, $query_sits_usuarios);
-        // while ($row_sit_usuario = mysqli_fetch_assoc($result_sits_usuarios)) {
-        //     var_dump($row_sit_usuario);
-        // }
-        // $valor_sits_usuario_id = "";
-        // if (isset($dados['sits_usuario_id'])) {
-        //     $valor_sits_usuario_id = $dados['sits_usuario_id'];
-        // } elseif (isset($row_usuario['sits_usuario_id'])) {
-        //     $valor_sits_usuario_id = $row_usuario['sits_usuario_id'];
-        // }
+        $valor_sits_usuario_id = "";
+        if (isset($dados['sits_usuario_id'])) {
+            $valor_sits_usuario_id = $dados['sits_usuario_id'];
+        } elseif (isset($row_usuario['sits_usuario_id'])) {
+            $valor_sits_usuario_id = $row_usuario['sits_usuario_id'];
+        }
         ?>
 
         <label>Situação: </label>
-        <select name="sits_usuario_id" id="sits_usuario_id">
-            <option value="">Selecione</option>
-            <?php
-            while ($row_sit_usuario = mysqli_fetch_assoc($result_sits_usuarios)) {
-                $select_sit_usuario = "";
-                if (isset($dados['sits_usuario_id']) and ($dados['sits_usuario_id'] == $row_sit_usuario['id'])) {
-                    $select_sit_usuario = "selected";
-                } elseif (isset($row_usuario['sits_usuario_id']) and ($row_usuario['sits_usuario_id'] == $row_sit_usuario['id'])) {
-                    $select_sit_usuario = "selected";
-                }
-
-                echo "<option value='" . $row_sit_usuario['id'] . "' $select_sit_usuario>" .
-                    $row_sit_usuario['nome'] . "</option>";
-            }
-            ?>
-        </select><br><br>
+        <input type="number" name="sits_usuario_id" id="sits_usuario_id" placeholder="situação" value="<?php echo $valor_sits_usuario_id; ?>" /><br><br>
 
         <!-- Sits - Nivel de Acesso -->
         <?php
-        $query_niveis_acessos = "SELECT id, nome FROM niveis_acessos ORDER BY nome ASC";
-        $result_niveis_acessos = mysqli_query($conn, $query_niveis_acessos);
+        $valor_niveis_acesso_id = "";
+        if (isset($dados['niveis_acesso_id'])) {
+            $valor_niveis_acesso_id = $dados['niveis_acesso_id'];
+        } elseif (isset($row_usuario['niveis_acesso_id'])) {
+            $valor_niveis_acesso_id = $row_usuario['niveis_acesso_id'];
+        }
         ?>
+
+
         <label>Nivel de Acesso: </label>
-
-        <select name="niveis_acesso_id" id="niveis_acesso_id">
-            <option value="">Selecione</option>
-            <?php
-            while ($row_nivel_acesso = mysqli_fetch_assoc($result_niveis_acessos)) {
-                $select_nivel_acesso = "";
-                if (isset($dados['niveis_acesso_id']) and ($dados['niveis_acesso_id'] == $row_nivel_acesso['id'])) {
-                    $select_nivel_acesso = "selected";
-                } elseif (isset($row_usuario['niveis_acesso_id']) and ($row_usuario['niveis_acesso_id'] == $row_nivel_acesso['id'])) {
-                    $select_nivel_acesso = "selected";
-                }
-
-                echo "<option value='" . $row_nivel_acesso['id'] . "' $select_nivel_acesso>" .
-                    $row_nivel_acesso['nome'] . "</option>";
-            }
-            ?>
-        </select><br><br>
-
+        <input type="number" name="niveis_acesso_id" id="niveis_acesso_id" placeholder="Digite a situação" value="<?php echo $valor_niveis_acesso_id; ?>" /><br><br>
 
         <input type="submit" value="salvar" name="SendEditUsuario" />
     </form>
