@@ -1,3 +1,7 @@
+<?php
+session_start();
+ob_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -11,18 +15,21 @@
 <body>
     <!-- INICIO PHP -->
     <?php
-    //Id do usuário que será editado
+    //Receber o id que vem pela URL
     $id = filter_input(INPUT_GET, 'id_usuario', FILTER_SANITIZE_NUMBER_INT);
 
+    //Conexao BD
     include_once 'conexao.php';
 
     echo "<h1>Editar Usuários</h1>";
 
+
     //Menu simples
     echo "<a href='crud.php'>Listar</a><br>";
     //Menu cadastrar
-    echo "<a href='cadastrar.php'>Cadastrar</a><br><br>";
-
+    echo "<a href='Cadastrar.php'>Cadastrar</a><br>";
+    //Visualizar
+    echo "<a href='visualizar.php?id_usuario=$id'>visualizar</a><br><br>";
 
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
@@ -35,15 +42,15 @@
         if (in_array('', $dados)) {
             $empty_input = true;
             echo "<p style='color: #f00'>Erro: Necessário preencher todos os campos!</p>";
-        }
-
-        //verificar se o e-mail nao esta sendo utilizado
-        $email = mysqli_real_escape_string($conn, $dados['email']);
-        $query_view_usuario = "SELECT id FROM usuarios WHERE email = '$email' AND id <> $id LIMIT 1";
-        $result_view_usuario = mysqli_query($conn, $query_view_usuario);
-        if (($result_view_usuario) and ($result_view_usuario->num_rows != 0)) {
-            $empty_input = true;
-            echo "<p style='color: #f00'>Erro: Este e-mail já está cadastrado!</p>";
+        } else {
+            //verificar se o e-mail nao esta sendo utilizado
+            $email = mysqli_real_escape_string($conn, $dados['email']);
+            $query_view_usuario = "SELECT id FROM usuarios WHERE email = '$email' AND id <> $id LIMIT 1";
+            $result_view_usuario = mysqli_query($conn, $query_view_usuario);
+            if (($result_view_usuario) and ($result_view_usuario->num_rows != 0)) {
+                $empty_input = true;
+                echo "<p style='color: #f00'>Erro: Este e-mail já está cadastrado!</p>";
+            }
         }
 
         if (!$empty_input) {
@@ -54,12 +61,18 @@
 
             $senha_cript = password_hash($senha, PASSWORD_DEFAULT);
 
-            $query_edit_usuario = "UPDATE usuarios SET nome = '$nome', email = '$email', senha = '$senha_cript',
-        sits_usuario_id = $sits_usuario_id, niveis_acesso_id = $niveis_acesso_id, modified = NOW() WHERE id = $id LIMIT 1";
+            $query_edit_usuario = "UPDATE usuarios SET nome = '$nome', email = '$email', senha =
+            '$senha_cript', sits_usuario_id = $sits_usuario_id, niveis_acesso_id = $niveis_acesso_id,
+            modified = NOW() WHERE id = $id LIMIT 1";
             mysqli_query($conn, $query_edit_usuario);
 
             if (mysqli_affected_rows($conn)) {
-                echo "<p style='color: #0000ff'>Usuario editado com sucesso!</p>";
+                $_SESSION['msg'] = "<p style='color: #0000ff'>Usuario editado com sucesso!</p>";
+                //Redirecionar para o listar
+                //header("Location: crud.php");
+
+                //Redirecionar para o visualizar
+                header("Location: visualizar.php?id_usuario$id");
             } else {
                 echo "<p style='color: #f00'>Erro: Usuario não editado com sucesso!</p>";
             }

@@ -18,10 +18,11 @@ session_start();
 
     echo "<h1>Listar os Usuários</h1>";
 
-    //Menu simples
-    echo "<a href='crud.php'>Listar</a><br>";
+    //Receber o id que vem pela URL
+    $id = filter_input(INPUT_GET, 'id_usuario', FILTER_SANITIZE_NUMBER_INT);
+
     //Menu cadastrar
-    echo "<a href='cadastrar.php'>Cadastrar</a><br><br>";
+    echo "<a href='Cadastrar.php?id_usuario=$id'>Cadastrar</a><br><br>";
 
     //Imprimir a mensagemde sucesso ou erro
     if (isset($_SESSION['msg'])) {
@@ -39,9 +40,10 @@ session_start();
         extract($row_usuario);
         echo "Id: $id <br>";
         echo "Nome: $nome <br>";
-        echo "E-mail: $email <br>";
+        echo "E-mail: $email <br><br>";
         echo "<a href='visualizar.php?id_usuario=$id'>visualizar</a><br>";
-        echo "<a href='alterar.php?id_usuario=$id'>Editar</a><br><br>";
+        echo "<a href='alterar.php?id_usuario=$id'>Editar</a><br>";
+        echo "<a href='apagar.php?id_usuario=$id'>Deletar</a><br><br>";
         echo "<hr>";
     }
 

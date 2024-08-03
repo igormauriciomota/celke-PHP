@@ -13,15 +13,26 @@ ob_start();
 
 <body>
     <?php
+    //Receber o id que vem pela URL
+    $id = filter_input(INPUT_GET, 'id_usuario', FILTER_SANITIZE_NUMBER_INT);
 
     include_once 'conexao.php';
 
     echo "<h1>Cadastrar Usuário</h1>";
 
+
     //Menu simples
     echo "<a href='crud.php'>Listar</a><br>";
-    //Menu Alterar dados
-    echo "<a href='alterar.php'>Editar</a><br><br>";
+    //Edita Usuarios
+    echo "<a href='alterar.php?id_usuario=$id'>Editar</a><br>";
+    //Visualizar
+    echo "<a href='visualizar.php?id_usuario=$id'>visualizar</a><br><br>";
+
+    //Imprimir a mensagemde sucesso ou erro
+    if (isset($_SESSION['msg'])) {
+        echo $_SESSION['msg'];
+        unset($_SESSION['msg']);
+    }
 
     //Receber os dados do formulário individualmente
     //$nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
@@ -35,24 +46,6 @@ ob_start();
     if (!empty($dados['SendCadUsuario'])) {
         //var_dump($dados);
         $empty_input = false;
-
-        //Validar o campo individual
-        /*if (empty($dados['nome'])) {
-            $empty_input = true;
-            echo "<p style='color: #f00'>Erro: Necessário preencher o campo nome!</p>";
-        }elseif (empty($dados['email'])) {
-            $empty_input = true;
-            echo "<p style='color: #f00'>Erro: Necessário preencher o campo e-mail!</p>";
-        }elseif (empty($dados['senha'])) {
-            $empty_input = true;
-            echo "<p style='color: #f00'>Erro: Necessário preencher o campo senha!</p>";
-        }elseif (empty($dados['sits_usuario_id'])) {
-            $empty_input = true;
-            echo "<p style='color: #f00'>Erro: Necessário preencher o campo situação!</p>";
-        }elseif (empty($dados['niveis_acesso_id'])) {
-            $empty_input = true;
-            echo "<p style='color: #f00'>Erro: Necessário preencher o campo nível de acesso!</p>";
-        }*/
 
         //Validar todos os campos
         $dados = array_map('trim', $dados);

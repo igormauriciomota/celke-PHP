@@ -1,3 +1,8 @@
+<?php
+session_start();
+ob_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -14,15 +19,13 @@
 
     echo "<h1>Detalhes do Usuário</h1>";
 
-    //Menu simples
-    echo "<a href='crud.php'>Listar</a><br>";
-    //Menu cadastrar
-    echo "<a href='cadastrar.php'>Cadastrar</a><br>";
-    //Menu Alterar dados
-    echo "<a href='alterar.php'>Modificar</a><br><br>";
-
     //Receber o id que vem pela URL
     $id = filter_input(INPUT_GET, 'id_usuario', FILTER_SANITIZE_NUMBER_INT);
+
+    if (isset($_SESSION['msg'])) {
+        echo $_SESSION['msg'];
+        unset($_SESSION['msg']);
+    }
 
     $query_usuario = "SELECT id, nome, email, sits_usuario_id, niveis_acesso_id, created, modified
     FROM usuarios
@@ -45,7 +48,11 @@
     if (!empty($modified)) {
         echo date('d/m/Y H:i:s', strtotime($modified));
     }
-    echo "<br>";
+    echo "<br><br>";
+    echo "<a href='crud.php'>Listar</a><br>";
+    echo "<a href='Cadastrar.php?id_usuario=$id'>Cadastrar</a><br>";
+    echo "<a href='alterar.php?id_usuario=$id'>Editar</a><br>";
+    echo "<a href='apagar.php?id_usuario=$id'>Deletar</a><br>";
 
 
     ?>
