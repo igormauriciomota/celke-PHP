@@ -20,10 +20,8 @@ ob_start();
 
     //Menu simples
     echo "<a href='crud.php'>Listar</a><br>";
-    //Menu cadastrar
-    echo "<a href='cadastrar.php'>Cadastrar</a><br>";
     //Menu Alterar dados
-    echo "<a href='alterar.php'>Modificar</a><br><br>";
+    echo "<a href='alterar.php'>Editar</a><br><br>";
 
     //Receber os dados do formulário individualmente
     //$nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);

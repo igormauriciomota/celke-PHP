@@ -12,7 +12,7 @@
     <!-- INICIO PHP -->
     <?php
     //Id do usuário que será editado
-    $id = 4;
+    $id = filter_input(INPUT_GET, 'id_usuario', FILTER_SANITIZE_NUMBER_INT);
 
     include_once 'conexao.php';
 
@@ -21,15 +21,22 @@
     //Menu simples
     echo "<a href='crud.php'>Listar</a><br>";
     //Menu cadastrar
-    echo "<a href='cadastrar.php'>Cadastrar</a><br>";
-    //Menu Alterar dados
-    echo "<a href='alterar.php'>Modificar</a><br><br>";
+    echo "<a href='cadastrar.php'>Cadastrar</a><br><br>";
+
 
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
     if (!empty($dados['SendEditUsuario'])) {
 
         $empty_input = false;
+
+        //Validar todos os campos
+        $dados = array_map('trim', $dados);
+        if (in_array('', $dados)) {
+            $empty_input = true;
+            echo "<p style='color: #f00'>Erro: Necessário preencher todos os campos!</p>";
+        }
+
         //verificar se o e-mail nao esta sendo utilizado
         $email = mysqli_real_escape_string($conn, $dados['email']);
         $query_view_usuario = "SELECT id FROM usuarios WHERE email = '$email' AND id <> $id LIMIT 1";
@@ -160,14 +167,14 @@
         <!-- Sits - Nivel de Acesso -->
         <?php
         $query_niveis_acessos = "SELECT id, nome FROM niveis_acessos ORDER BY nome ASC";
-        $result_niveis_acessos = mysqli_query($conn, $query_niveis_acessos);
+        $result_nivel_acessos = mysqli_query($conn, $query_niveis_acessos);
         ?>
         <label>Nivel de Acesso: </label>
 
         <select name="niveis_acesso_id" id="niveis_acesso_id">
             <option value="">Selecione</option>
             <?php
-            while ($row_nivel_acesso = mysqli_fetch_assoc($result_niveis_acessos)) {
+            while ($row_nivel_acesso = mysqli_fetch_assoc($result_nivel_acessos)) {
                 $select_nivel_acesso = "";
                 if (isset($dados['niveis_acesso_id']) and ($dados['niveis_acesso_id'] == $row_nivel_acesso['id'])) {
                     $select_nivel_acesso = "selected";

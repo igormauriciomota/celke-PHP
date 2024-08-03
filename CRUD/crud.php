@@ -21,9 +21,7 @@ session_start();
     //Menu simples
     echo "<a href='crud.php'>Listar</a><br>";
     //Menu cadastrar
-    echo "<a href='cadastrar.php'>Cadastrar</a><br>";
-    //Menu Alterar dados
-    echo "<a href='alterar.php'>Modificar</a><br><br>";
+    echo "<a href='cadastrar.php'>Cadastrar</a><br><br>";
 
     //Imprimir a mensagemde sucesso ou erro
     if (isset($_SESSION['msg'])) {
@@ -43,6 +41,7 @@ session_start();
         echo "Nome: $nome <br>";
         echo "E-mail: $email <br>";
         echo "<a href='visualizar.php?id_usuario=$id'>visualizar</a><br>";
+        echo "<a href='alterar.php?id_usuario=$id'>Editar</a><br><br>";
         echo "<hr>";
     }
 
