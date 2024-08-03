@@ -1,3 +1,7 @@
+<?php
+
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -9,10 +13,23 @@
 
 <body>
     <?php
-
+    //Conexao BD
     include_once 'conexao.php';
 
     echo "<h1>Listar os Usuários</h1>";
+
+    //Menu simples
+    echo "<a href='crud.php'>Listar</a><br>";
+    //Menu cadastrar
+    echo "<a href='cadastrar.php'>Cadastrar</a><br>";
+    //Menu Alterar dados
+    echo "<a href='alterar.php'>Modificar</a><br><br>";
+
+    //Imprimir a mensagemde sucesso ou erro
+    if (isset($_SESSION['msg'])) {
+        echo $_SESSION['msg'];
+        unset($_SESSION['msg']);
+    }
 
     $query_usuarios = "SELECT id, nome, email
     FROM usuarios
