@@ -21,8 +21,6 @@ ob_start();
     //Conexao BD
     include_once 'conexao.php';
 
-
-
     //Menu simples
     echo "<a href='crud.php'>Listar</a><br>";
     //Menu cadastrar
