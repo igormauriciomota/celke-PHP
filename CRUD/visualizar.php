@@ -17,11 +17,25 @@ ob_start();
     // conexo com BD
     include_once 'conexao.php';
 
-    echo "<h1>Detalhes do Usuário</h1>";
-
     //Receber o id que vem pela URL
     $id = filter_input(INPUT_GET, 'id_usuario', FILTER_SANITIZE_NUMBER_INT);
 
+    //Menu simples
+    echo "<a href='crud.php'>Listar</a><br>";
+
+    // Cadastrar
+    echo "<a href='Cadastrar.php?id_usuario=$id'>Cadastrar</a><br>";
+
+    // Alterar = Editar
+    echo "<a href='alterar.php?id_usuario=$id'>Editar</a><br>";
+
+    // Deletar
+    echo "<a href='apagar.php?id_usuario=$id'>Deletar</a><br>";
+
+    // NOME DA PAGINA
+    echo "<h1>Detalhes do Usuário</h1>";
+
+    //Imprimir a mensagem de sucesso ou erro
     if (isset($_SESSION['msg'])) {
         echo $_SESSION['msg'];
         unset($_SESSION['msg']);
@@ -33,6 +47,7 @@ ob_start();
     ORDER BY id DESC
     LIMIT 1";
 
+    //Listar Usuario
     $result_usuario = mysqli_query($conn, $query_usuario);
 
     $row_usuario = mysqli_fetch_assoc($result_usuario);
@@ -44,16 +59,12 @@ ob_start();
     echo "Nivel de Acesso: $niveis_acesso_id <br>";
     echo "Cadastrado: " . date('d/m/Y H:i:s', strtotime($created)) . "<br>";
 
+    // So edita se existir valor em data de modificação
     echo "Editado: ";
     if (!empty($modified)) {
         echo date('d/m/Y H:i:s', strtotime($modified));
     }
     echo "<br><br>";
-    echo "<a href='crud.php'>Listar</a><br>";
-    echo "<a href='Cadastrar.php?id_usuario=$id'>Cadastrar</a><br>";
-    echo "<a href='alterar.php?id_usuario=$id'>Editar</a><br>";
-    echo "<a href='apagar.php?id_usuario=$id'>Deletar</a><br>";
-
 
     ?>
 </body>

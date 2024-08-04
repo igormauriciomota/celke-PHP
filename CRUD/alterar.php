@@ -21,7 +21,6 @@ ob_start();
     //Conexao BD
     include_once 'conexao.php';
 
-    echo "<h1>Editar Usuários</h1>";
 
 
     //Menu simples
@@ -30,6 +29,8 @@ ob_start();
     echo "<a href='Cadastrar.php'>Cadastrar</a><br>";
     //Visualizar
     echo "<a href='visualizar.php?id_usuario=$id'>visualizar</a><br><br>";
+
+    echo "<h1>Editar Usuários</h1>";
 
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
@@ -68,11 +69,9 @@ ob_start();
 
             if (mysqli_affected_rows($conn)) {
                 $_SESSION['msg'] = "<p style='color: #0000ff'>Usuario editado com sucesso!</p>";
-                //Redirecionar para o listar
-                //header("Location: crud.php");
 
                 //Redirecionar para o visualizar
-                header("Location: visualizar.php?id_usuario$id");
+                header("Location: visualizar.php?id_usuario=$id");
             } else {
                 echo "<p style='color: #f00'>Erro: Usuario não editado com sucesso!</p>";
             }

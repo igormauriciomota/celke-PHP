@@ -21,10 +21,13 @@ session_start();
     //Receber o id que vem pela URL
     $id = filter_input(INPUT_GET, 'id_usuario', FILTER_SANITIZE_NUMBER_INT);
 
-    //Menu cadastrar
-    echo "<a href='Cadastrar.php?id_usuario=$id'>Cadastrar</a><br><br>";
+    //Menu simples
+    echo "<a href='crud.php'>Listar</a><br>";
 
-    //Imprimir a mensagemde sucesso ou erro
+    //Menu cadastrar
+    echo "<a href='Cadastrar.php'>Cadastrar</a><br><br>";
+
+    //Imprimir a mensagemde de sucesso ou erro
     if (isset($_SESSION['msg'])) {
         echo $_SESSION['msg'];
         unset($_SESSION['msg']);

@@ -1,5 +1,6 @@
 <?php
 session_start();
+// E utilizado para melhorar o redirecionamento
 ob_start();
 ?>
 <!DOCTYPE html>
@@ -18,28 +19,10 @@ ob_start();
 
     include_once 'conexao.php';
 
-    echo "<h1>Cadastrar Usuário</h1>";
-
-
     //Menu simples
-    echo "<a href='crud.php'>Listar</a><br>";
-    //Edita Usuarios
-    echo "<a href='alterar.php?id_usuario=$id'>Editar</a><br>";
-    //Visualizar
-    echo "<a href='visualizar.php?id_usuario=$id'>visualizar</a><br><br>";
+    echo "<a href='crud.php'>Listar</a><br><br>";
 
-    //Imprimir a mensagemde sucesso ou erro
-    if (isset($_SESSION['msg'])) {
-        echo $_SESSION['msg'];
-        unset($_SESSION['msg']);
-    }
-
-    //Receber os dados do formulário individualmente
-    //$nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
-    //echo "Nome do usuário: $nome <br>";
-
-    //$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
-    //echo "E-mail do usuário: $email <br>";
+    echo "<h1>Cadastrar Usuário</h1>";
 
     $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
 
@@ -52,15 +35,16 @@ ob_start();
         if (in_array('', $dados)) {
             $empty_input = true;
             echo "<p style='color: #f00'>Erro: Necessário preencher todos os campos!</p>";
-        }
+        } else {
 
-        //Verificar se nenhum usuario não esta usando este e-mail.(NÃO PODE USAR EM DUPLICIDADE).
-        $email = mysqli_real_escape_string($conn, $dados['email']);
-        $query_view_usuario = "SELECT id FROM usuarios WHERE email = '$email'LIMIT 1";
-        $result_view_usuario = mysqli_query($conn, $query_view_usuario);
-        if (($result_view_usuario) and ($result_view_usuario->num_rows != 0)) {
-            $empty_input = true;
-            echo "<p style='color: #f00'>Erro: Este e-mail já está cadastrado!</p>";
+            //Verificar se nenhum usuario não esta usando este e-mail.(NÃO PODE USAR EM DUPLICIDADE).
+            $email = mysqli_real_escape_string($conn, $dados['email']);
+            $query_view_usuario = "SELECT id FROM usuarios WHERE email = '$email'LIMIT 1";
+            $result_view_usuario = mysqli_query($conn, $query_view_usuario);
+            if (($result_view_usuario) and ($result_view_usuario->num_rows != 0)) {
+                $empty_input = true;
+                echo "<p style='color: #f00'>Erro: Este e-mail já está cadastrado!</p>";
+            }
         }
 
         if (!$empty_input) {
@@ -76,7 +60,9 @@ ob_start();
 
             $created = date("Y-m-d H:i:s");
 
-            $query_cad_usuario = "INSERT INTO usuarios (nome, email, senha, sits_usuario_id, niveis_acesso_id, created) VALUES ('$nome', '$email', '$senha_cript', $sits_usuario_id, $niveis_acesso_id, '$created')";
+            $query_cad_usuario = "INSERT INTO usuarios (nome, email, senha,
+            sits_usuario_id, niveis_acesso_id, created) VALUES ('$nome', '$email',
+            '$senha_cript', $sits_usuario_id, $niveis_acesso_id, '$created')";
             mysqli_query($conn, $query_cad_usuario);
             if (mysqli_insert_id($conn)) {
                 $_SESSION['msg'] = "<p style='color: green'>Usuário cadastrado com sucesso!</p>";

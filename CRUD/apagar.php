@@ -5,8 +5,6 @@
     //Id do usuário que sera editado
     $id = filter_input(INPUT_GET, 'id_usuario', FILTER_SANITIZE_NUMBER_INT);
 
-    var_dump($id);
-
     //Conexao BD
     include_once 'conexao.php';
 
