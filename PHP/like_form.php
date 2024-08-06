@@ -45,27 +45,39 @@ include_once 'conexao.php';
             $query_usuarios = "SELECT id, nome, email
             FROM usuarios
             WHERE nome LIKE '%$nome%'
-            OR email LIKE '%$email%' ";
+            OR email LIKE '%$email%' 
+            ORDER BY nome ASC";
         } elseif (!empty($dados['nome'])) {
             $query_usuarios = "SELECT id, nome, email
             FROM usuarios
-            WHERE nome LIKE '%$nome%'";
+            WHERE nome LIKE '%$nome%'
+            ORDER BY nome ASC";
         } elseif (!empty($dados['email'])) {
             $query_usuarios = "SELECT id, nome, email
             FROM usuarios
-            WHERE email LIKE '%$email%'";
+            WHERE email LIKE '%$email%'
+            ORDER BY nome ASC ";
+        } else {
+            $query_usuarios = "SELECT id, nome, email
+            FROM usuarios
+            ORDER BY nome ASC ";
         }
-
-        $result_usuarios = mysqli_query($conn, $query_usuarios);
-
-        while ($row_usuario = mysqli_fetch_assoc($result_usuarios)) {
-            extract($row_usuario);
-            echo "Id: $id <br>";
-            echo "Nome: $nome <br>";
-            echo "E-mail: $email <br><br>";
-            echo "<hr>";
-        }
+    } else {
+        $query_usuarios = "SELECT id, nome, email
+            FROM usuarios
+            ORDER BY nome ASC ";
     }
+
+    $result_usuarios = mysqli_query($conn, $query_usuarios);
+
+    while ($row_usuario = mysqli_fetch_assoc($result_usuarios)) {
+        extract($row_usuario);
+        echo "Id: $id <br>";
+        echo "Nome: $nome <br>";
+        echo "E-mail: $email <br><br>";
+        echo "<hr>";
+    }
+
 
     ?>
 </body>
