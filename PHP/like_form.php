@@ -24,12 +24,30 @@ include_once 'conexao.php';
 
     <form method="POST" action="">
         <!-- Campo Nome -->
-        <label for="">Nome: </label>
-        <input type="text" name="nome" id="nome" placeholder="Digite o nome do usuário"><br><br>
 
+        <!-- INICIO PHP -->
+        <?php
+        //Manter o nome no formulario
+        $nome = "";
+        if (!empty($dados['nome'])) {
+            $nome = $dados['nome'];
+        }
+        ?>
+        <!-- FIM PHP -->
+        <label for="">Nome: </label>
+        <input type="text" name="nome" id="nome" placeholder="Digite o nome do usuário" value="<?php echo $nome; ?>"><br><br>
+        <!-- INICIO PHP -->
+        <?php
+        //Manter o nome no formulario
+        $email = "";
+        if (!empty($dados['email'])) {
+            $email = $dados['email'];
+        }
+        ?>
+        <!-- FIM PHP -->
         <!-- Campo e-mail -->
         <label for="">E-mail: </label>
-        <input type="text" name="email" id="email" placeholder="Digite o seu melhor e-mail"><br><br>
+        <input type="text" name="email" id="email" placeholder="Digite o seu melhor e-mail" value="<?php echo $email; ?>"><br><br>
 
         <!-- Botão -->
         <input type="submit" value="Pesquisar" name="PesqUsuario"><br><br>
