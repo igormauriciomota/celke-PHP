@@ -56,7 +56,7 @@ ob_start();
     echo "Nome: $nome <br>";
     echo "E-mail: $email <br>";
     echo "Situação: $sits_usuario_id <br>";
-    echo "Nivel de Acesso: $niveis_acesso_id <br>";
+    echo "Nivel de Acesso: $nome_niv <br>";
     echo "Cadastrado: " . date('d/m/Y H:i:s', strtotime($created)) . "<br>";
 
     // So edita se existir valor em data de modificação
