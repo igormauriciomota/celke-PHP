@@ -15,6 +15,7 @@ include_once 'conexao.php';
     <!-- Inicio PHP -->
     <?php
 
+    // A Ordem dos Fatores são importantes, nao pode ignorar a ordem.
     $query_usuarios = "SELECT usr.id, usr.nome AS  nome_urs, usr.email, usr.niveis_acesso_id,
     niv.nome AS nome_niv,
     sit.nome AS nome_sit
