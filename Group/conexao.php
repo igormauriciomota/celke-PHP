@@ -10,7 +10,7 @@ ini_set('display_errors', false);
 $hos = "localhost";
 $user = "root";
 $pass = "";
-$dbname = "celke";
+$dbname = "mind";
 $port = 3306;
 
 // conexão com a porta USADO QUANDO HOUVER MAIS DE UM BANCO DE DADOS E NECESSARIO IDENTIFICAR A PORTA CORRETA
@@ -22,7 +22,7 @@ $port = 3306;
 $conn = mysqli_connect($host, $user, $pass, $dbname);
 
 if ($conn) {
-    //echo "Conexao com banco de dados realizado com sucesso! <br>";
+    echo "Conexao com banco de dados realizado com sucesso! <br>";
 } else {
 
     echo "Erro: Conexao com banco e dados não realizado com sucesso. Erro
