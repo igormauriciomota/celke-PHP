@@ -35,6 +35,7 @@ include_once 'conexao.php';
 
         echo "ID: $id <br>";
         echo "Nome: $nome <br>";
+        echo "Id do Usuario: $usuario_id <br>";
         echo "Quantidade de Acesso: $qnt_acessos <br><br>";
         echo "<hr>";
     }
