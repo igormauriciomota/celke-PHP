@@ -13,7 +13,7 @@ include_once 'conexao.php';
 <body>
     <!-- GROUP BY agrupa linhas baseado em semelhanças entre elas. -->
 
-    <h1>GROUP BY</h1>
+    <h1>GROUP BY-2 Agrupa total</h1>
 
     <!-- Iniciando PHP -->
     <?php
@@ -24,7 +24,6 @@ include_once 'conexao.php';
     COUNT(ace.aula_id) AS qnt_acessos
     FROM aulas AS aul 
     INNER JOIN acessos_aulas AS ace ON ace.aula_id=aul.id
-    WHERE usuario_id = $useuario_id
     GROUP BY ace.aula_id";
 
     $result_acesso_aulas = mysqli_query($conn, $query_acesso_aulas);
