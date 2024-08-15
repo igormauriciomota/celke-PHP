@@ -14,7 +14,8 @@ include_once 'conexao.php';
     <?php
 
     // Variavel começa sempre co $_ ou $letras
-    // estamos grardando dentro da variavel name a string Igor
+    // estamos guardando dentro da variavel name a string Igor
+
     $name = 'Igor';
 
     echo $name;
@@ -24,6 +25,17 @@ include_once 'conexao.php';
     echo gettype($name);
 
     echo "<br><br>";
+
+    // Variavel com mais nomes pode ser usado de duas formas
+    // camelCase ($myName) ou snake_case ($my_name) -> deve ser usado um padrao ate o final do projeto
+    // case sensitve
+
+    $my_name = 'Mota';
+
+    echo $my_name;
+
+    echo "<br><br>";
+
     echo "<hr>";
     // String - tudo que colocar entre aspas simples de duplas; gettype = tipo de dado
 
