@@ -77,6 +77,48 @@ include_once 'conexao.php';
     // null - Ausencia de um valor
     echo gettype(null);
 
+    echo "<br><br>";
+    echo "<hr>";
+
+     //Constante é um identificador (nome) para um valor simples. 
+     //- Como o nome sugere, esse valor não pode mudar durante a execução do script
+    echo "<h1>Constantes</h1><br><br>";
+
+    echo "<h3>Não e uma Constantes</h3><br>";
+    // Não e uma constante
+    $name = "Igor";
+    echo $name;
+    $name = "Mota";
+    echo $name;
+
+    echo '<br><br>';
+    echo "<h3>E uma Constantes</h3><br>";
+
+    define('NAME', 'Igor');
+    echo NAME;
+
+    echo '<br><br>';
+    function teste()
+    {
+        echo __FUNCTION__;
+        echo __METHOD__;
+    }
+
+    teste();
+
+    echo '<br><br>';
+
+    define('NAME', 'Igor');
+
+    if(defined('NAME')){
+        echo 'Foi definido<br>';
+    }
+
+
+   
+
+
+
 
 
 
