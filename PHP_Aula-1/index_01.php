@@ -114,6 +114,37 @@ include_once 'conexao.php';
         echo 'Foi definido<br>';
     }
 
+    echo '<br><br>';
+    echo '<hr>';
+    echo '<h2>OPERADORES ARITMÉTICOS - COMO CRIAR VARIAVEIS<h2>';
+
+    $a = 10;
+    $b = 20;
+    $c = 30;
+
+    $var_soma = $a + $b + $c;
+    $var_sub = $c - $a;
+    $var_mult = $b * $c;
+    $var_div = $c / $a;
+    $var_sobra = $c % $b;
+
+    echo "Resultado da soma de 10 + 20 + 30 e: $var_soma <br><br>";
+    echo "<hr>";
+
+    echo "Resultado da subitração de 30 - 10 e: $var_sub <br><br>";
+    echo "<hr>";
+
+    echo "Resultado da Mutiplicação de 20 * 30 e: $var_mult <br><br>";
+    echo "<hr>";
+
+    echo "Resultado da divisão de 30/10 e: $var_div <br><br>";
+    echo "<hr>";
+
+    echo "Resultado da sobra de 30 % 20 e: $var_sobra <br><br>";
+    echo "<hr>";
+
+
+
 
    
 
