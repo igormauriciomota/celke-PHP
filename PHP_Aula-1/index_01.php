@@ -143,6 +143,60 @@ include_once 'conexao.php';
     echo "Resultado da sobra de 30 % 20 e: $var_sobra <br><br>";
     echo "<hr>";
 
+    // o ponto realiza a concatenação
+
+    echo '<h2>Operadores de Atribuição<h2>';
+
+    $name = 'Alexandre ';
+
+    $name = $name . 'cardoso';
+
+    echo $name;
+
+    // Outra forma e usar o operador .=
+    echo '<br><br>';
+
+    $name_1 = 'Igor ';
+
+    $name_1 .= 'Mota';
+
+    echo $name_1;
+
+    echo "<br><br>";
+
+    $num = 10;
+
+    $num = $num + 20;
+
+    echo $num;
+
+    echo "<br><br>";
+
+    $d = 10;
+    $e = 8;
+    $f = 6;
+
+    $d += $e;
+    
+    echo $d;
+
+    echo "<hr>";
+
+    echo '<h2>Operadores de Incremento e Decremento<h2>';
+
+    $umber = 10;
+
+    $umber = ++$umber;
+
+    echo $umber;
+
+    echo "<br><br>";
+
+    $umber1 = 10;
+
+    $umber1 = --$umber1;
+
+    echo $umber1;
 
 
 
